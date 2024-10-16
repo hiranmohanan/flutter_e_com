@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../prductDetail/view/product_detail_view.dart';
+
 class ProductView extends StatelessWidget {
   const ProductView({super.key});
 
@@ -78,7 +80,7 @@ class ProductView extends StatelessWidget {
                                   Theme.of(context).colorScheme.secondary,
                             ),
                             onPressed: () {
-                              // Navigator.pushNamed(context, '/product');
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => const ProductDetailView()));
                             },
                             child: const Text('View Product',
                                 style: TextStyle(color: Colors.white)),

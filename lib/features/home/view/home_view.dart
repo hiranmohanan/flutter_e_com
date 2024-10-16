@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_e_com/features/product/view/prouct_view.dart';
+import 'package:flutter_e_com/features/wishList/view/wish_list_view.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class HomeView extends StatelessWidget {
@@ -9,6 +10,7 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     List<Widget> body = [
       const ProductView(),
+      const WishListView(),
     ];
     return Scaffold(
       appBar: AppBar(
