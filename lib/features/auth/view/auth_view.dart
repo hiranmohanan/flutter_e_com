@@ -9,6 +9,7 @@ class AuthView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    context.read<AuthBloc>().add(AuthCall());
     return Scaffold(
       body: Center(
         child: BlocConsumer<AuthBloc, AuthState>(
@@ -32,6 +33,9 @@ class AuthView extends StatelessWidget {
             }
           },
           builder: (context, state) {
+            if (state is AuthLoading) {
+              return const CircularProgressIndicator();
+            }
             return Column(
               children: [
                 Text(

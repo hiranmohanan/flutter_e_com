@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CartView extends StatelessWidget {
   const CartView({super.key});
@@ -13,7 +14,7 @@ class CartView extends StatelessWidget {
             style: Theme.of(context).textTheme.bodyMedium,
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 30,
         ),
         ListView.builder(
@@ -23,13 +24,26 @@ class CartView extends StatelessWidget {
                 title: Text('Item $index'),
                 subtitle: Text('Price: \$${index * 100}'),
                 trailing: IconButton(
-                  icon: Icon(Icons.delete),
+                  icon: const Icon(Icons.delete),
                   onPressed: () {},
                 ),
               );
             },
             shrinkWrap: true,
             ),
+        const SizedBox(
+          height: 30,
+        ),
+        ElevatedButton.icon(
+            onPressed: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('Checkout Successful'),
+                ),
+              );
+            },
+            label: const Text('Checkout'),
+            icon: const FaIcon(FontAwesomeIcons.cartShopping)),
       ],
     );
   }

@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_e_com/service/firebase_service.dart';
 
+import '../../../models/ffirebase/models.dart';
+
 
 
 part 'auth_event.dart';
@@ -47,7 +49,26 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     }
   }
 
-  Future<void> auth(AuthCall event,Emitter emit) async {}
+  Future<void> auth(AuthCall event,Emitter emit) async {
+    try{
+      emit(AuthLoading());
+      final authResponce=await FireAuthService().checkUser();
+      if(authResponce is FireAuthResponce){
+        if(authResponce.isLoggedin){
+          emit(AuthSuccess());
+        }
+        else{
+          emit(AuthError(error: "User Not Logged In"));
+        }
+      }
+      else{
+        emit(AuthError(error: "Faild To Login"));
+      }
+
+    }catch(e){
+      emit(AuthError(error:  e.toString()));
+    }
+  }
 
 
 }
