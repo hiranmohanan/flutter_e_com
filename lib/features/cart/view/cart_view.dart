@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_e_com/features/cart/bloc/cart_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import 'checkout_view.dart';
+
 class CartView extends StatelessWidget {
   const CartView({super.key});
 
@@ -32,26 +34,17 @@ class CartView extends StatelessWidget {
             Center(
               child: Text(
                 'Cart View',
-                style: Theme.of(context).textTheme.bodyMedium,
+                style: Theme.of(context).textTheme.titleLarge,
               ),
             ),
 
-            SearchAnchor.bar(suggestionsBuilder: (context, controller) {
-              return List.generate(cartData.length, (index) {
-                return ListTile(
-                  title: Text(cartData[index].name!),
-                  onTap: () {
-                    controller.text = cartData[index].name!;
-                  },
-                );
-              });
-            }),
+           
             const SizedBox(
               height: 30,
             ),
            Container(
              padding: const EdgeInsets.only(bottom: 200),
-                height: MediaQuery.sizeOf(context).height,
+                height: MediaQuery.sizeOf(context).height*0.6,
                 width: MediaQuery.sizeOf(context).width,
              child: ListView.builder(
                     itemCount: cartData.length,
@@ -78,16 +71,32 @@ class CartView extends StatelessWidget {
             const SizedBox(
               height: 30,
             ),
+            Container(
+              height: MediaQuery.sizeOf(context).height*0.3,
+              decoration: BoxDecoration(
+               borderRadius: const BorderRadius.only(
+                 topLeft: Radius.circular(20),
+                 topRight: Radius.circular(20),
+               ),
+               border: Border.all(
+                 color: Theme.of(context).primaryColor,),
+                // color: Theme.of(context).primaryColor,
+              ),
+              child: ListView(
+                children: <Widget>[
+                  ListTile(
+                    title: const Text('Total Amount'),
+                    trailing: Text('\$${cartData.fold(0, (previousValue, element) => previousValue + element.price!)}'),
+                  ),
             ElevatedButton.icon(
                 onPressed: () {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text('Checkout Successful'),
-                    ),
-                  );
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>const CheckOutView()));
                 },
                 label: const Text('Checkout'),
                 icon: const FaIcon(FontAwesomeIcons.cartShopping)),
+                ],
+              ),
+            ),
           ],
         );
       }
