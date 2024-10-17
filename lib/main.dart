@@ -1,5 +1,6 @@
-import 'package:firebase_core/firebase_core.dart';
 
+
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_e_com/features/auth/bloc/auth_bloc.dart';
@@ -8,12 +9,15 @@ import 'package:flutter_e_com/features/cart/bloc/cart_bloc.dart';
 import 'package:flutter_e_com/features/home/bloc/home_bloc.dart';
 import 'package:flutter_e_com/features/home/view/home_view.dart';
 import 'package:flutter_e_com/features/product/bloc/product_bloc.dart';
+import 'package:flutter_e_com/firebase_options.dart';
 
 import 'features/wishList/bloc/wishlist_bloc.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 

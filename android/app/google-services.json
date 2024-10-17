@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "974251935497-qmckvl4bflj4uegl1s2igenbghve451h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hiran.ecom",
+            "certificate_hash": "b49ddaf5ab65adb39ee20d15ef0dcd6b0c4e4ace"
+          }
+        },
+        {
           "client_id": "974251935497-ddne95sbrmkj8gc5bkhf3sfg90cu1ubh.apps.googleusercontent.com",
           "client_type": 3
         }
