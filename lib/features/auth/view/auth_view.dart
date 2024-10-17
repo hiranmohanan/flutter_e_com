@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class AuthView extends StatelessWidget {
   const AuthView({super.key});
@@ -9,26 +10,14 @@ class AuthView extends StatelessWidget {
       body: Center(
         child: ListView(
           children: [
-            const Text('Login'),
-             TextFormField(
-              decoration: InputDecoration(
-                
-                label: const Text('Email'),
-                hintText: 'Email',
-              ),
+            Text(
+              'Login',
+              style: Theme.of(context).textTheme.headlineMedium,
             ),
-            TextFormField(
-              decoration: InputDecoration(
-                label: const Text('Password'),
-                hintText: 'Password',
-              ),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/home');
-              },
-              child: const Text('Login'),
-            ),
+            ElevatedButton.icon(
+                onPressed: () {},
+                label: const Text('Continue With Google'),
+                icon: const Icon(FontAwesomeIcons.googlePlusG)),
           ],
         ),
       ),
