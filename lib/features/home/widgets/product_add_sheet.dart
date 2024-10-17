@@ -56,6 +56,7 @@ class _ProductAddSheetState extends State<ProductAddSheet> {
                             image: imageController.text,
                           ),
                         );
+                        FireRDbService().getData();
                         Navigator.pop(context);
                       },
                       child: const Text('Add'),

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_e_com/models/ffirebase/models.dart';
 
 class ProductDetailView extends StatelessWidget {
-  const ProductDetailView({super.key});
+  const ProductDetailView({super.key, required this.product});
+
+  final FireRdbData product;
 
   @override
   Widget build(BuildContext context) {

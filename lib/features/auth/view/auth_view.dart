@@ -16,12 +16,7 @@ class AuthView extends StatelessWidget {
           listener: (context, state) {
             debugPrint('Auth State $state');
             if (state is AuthSuccess) {
-              debugPrint('Login Successful');
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content: Text('Login Successful'),
-                ),
-              );
+             
               Navigator.of(context).pushReplacementNamed('/home');
             } else if (state is AuthError) {
               ScaffoldMessenger.of(context).showSnackBar(

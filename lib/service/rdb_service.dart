@@ -7,18 +7,24 @@ class FireRDbService {
     return ref;
   }
 
-  Future getData({String? key}) async {
-    final ref = FirebaseDatabase.instance.ref("iteams");
-     List<FireRdbData> list = [];
+  Future<List<FireRdbData>> getData({String? key}) async {
+    final ref =  FirebaseDatabase.instance.ref("iteams");
+    List<FireRdbData> list = [];
+    final Completer<List<FireRdbData>> completer = Completer();
     ref.onValue.listen((event) {
       Map<dynamic, dynamic>? data =
           event.snapshot.value as Map<dynamic, dynamic>?;
+
       if (data != null) {
         data.forEach((key, value) {
           list.add(FireRdbData.fromMap(value));
         });
+completer.complete(list);
+      } else {
+        list = [];
       }
     });
+    return completer.future;
   }
 
   Future<void> addProduct({required FireRdbData data}) async {
@@ -44,10 +50,12 @@ class FireRDbService {
     });
   }
 
-  Future getWishList() async {
+  Future<List<FireRdbData>> getWishList() async {
     final ref = await initDB;
     final newref = ref.child("wishlist");
     List<FireRdbData> list = [];
+    final Completer<List<FireRdbData>> completer = Completer();
+
     newref.onValue.listen((event) {
       Map<dynamic, dynamic>? data =
           event.snapshot.value as Map<dynamic, dynamic>?;
@@ -56,7 +64,10 @@ class FireRDbService {
           list.add(FireRdbData.fromMap(value));
         });
       }
+      completer.complete(list);
     });
+
+    return completer.future;
   }
 
   Future<void> addCart({required FireRdbData data}) async {
@@ -70,10 +81,12 @@ class FireRDbService {
       "image": data.image,
     });
   }
+
   Future getCart() async {
     final ref = await initDB;
     final newref = ref.child("cart");
     List<FireRdbData> list = [];
+    final Completer<List<FireRdbData>> completer = Completer();
     newref.onValue.listen((event) {
       Map<dynamic, dynamic>? data =
           event.snapshot.value as Map<dynamic, dynamic>?;
@@ -82,6 +95,8 @@ class FireRDbService {
           list.add(FireRdbData.fromMap(value));
         });
       }
+      completer.complete(list);
     });
+  return completer.future;
   }
 }
