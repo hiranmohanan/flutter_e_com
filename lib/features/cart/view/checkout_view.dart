@@ -11,12 +11,65 @@ class CheckOutView extends StatelessWidget {
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(
-              'Checkout View',
-              style: Theme.of(context).textTheme.headlineMedium,
+            const ListTile(
+              title: Text('Name'),
+              trailing: Text('John Doe'),
+            ),  
+            const ListTile(
+              title: Text('total items'),
+              trailing: Text('5'),
+            ),
+            const ListTile(
+              title: Text('total price'),
+              trailing: Text('1000\$'),
+            ),
+            const ListTile(
+              title: Text('grand total'),
+              trailing: Text('900\$'),
+            ),
+            const ExpansionTile(
+              title: Text('Address'),
+                          childrenPadding:  EdgeInsets.all(10),
+            tilePadding:  EdgeInsets.all(10),
+              children: [
+                ListTile(
+                  title:  Text('Street'),
+                  trailing:  Text('123 Main Street'),
+                ),
+                ListTile(
+                  title:  Text('City'),
+                  trailing:  Text('New York'),
+                ),
+                ListTile(
+                  title:  Text('State'),
+                  trailing:  Text('NY'),
+                ),
+                ListTile(
+                  title:  Text('Zip Code'),
+                  trailing:  Text('10001'),
+                ),
+              ],
+            ),
+             ExpansionTile(title: const Text('Payment'),
+            childrenPadding:  const EdgeInsets.all(10),
+            tilePadding:  const EdgeInsets.all(10),
+              children: [
+                ListTile(
+                  title: const Text('Razorpay'),
+                  trailing: const Text('1234 5678 9012 3456'),
+                  onTap: () {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Payment Successful'),
+                      ),
+                    );
+                  },
+                ),
+                
+              ],
             ),
             ElevatedButton.icon(
                 onPressed: () {

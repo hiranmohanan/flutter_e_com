@@ -32,10 +32,14 @@ class AuthView extends StatelessWidget {
               return const CircularProgressIndicator();
             }
             return Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
                   'Login',
                   style: Theme.of(context).textTheme.headlineMedium,
+                ),
+                const SizedBox(
+                  height: 30,
                 ),
                 ElevatedButton.icon(
                     onPressed: () {
@@ -47,8 +51,8 @@ class AuthView extends StatelessWidget {
                     onPressed: () {
                       context.read<AuthBloc>().add(AuthGoogleCall());
                     },
-                    label: const Text('Logout'),
-                    icon: const Icon(FontAwesomeIcons.ghost)),
+                    label: const Text('Register With Google'),
+                    icon: const Icon(FontAwesomeIcons.googlePlusG)),
               ],
             );
           },

@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_e_com/features/wishList/bloc/wishlist_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../../prductDetail/view/product_detail_view.dart';
+
 class WishListView extends StatelessWidget {
   const WishListView({super.key});
 
@@ -34,6 +36,13 @@ class WishListView extends StatelessWidget {
                       title: Text(snapshot[index].name!),
                       onTap: () {
                         controller.text = snapshot[index].name!;
+                         Navigator.push(context, MaterialPageRoute(
+                        builder: (context) {
+                          return ProductDetailView(
+                            product: snapshot[index],
+                          );
+                        },
+                      ));
                       },
                     );
                   });

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_e_com/models/ffirebase/models.dart';
+import 'package:flutter_e_com/widegts/widgets.dart';
 
 class ProductDetailView extends StatelessWidget {
   const ProductDetailView({super.key, required this.product});
@@ -52,6 +53,9 @@ class ProductDetailView extends StatelessWidget {
               ],
             ),
           ),
+          SliverToBoxAdapter(
+            child: cartButton(context, [product],0 ),
+          )
         ],
       ),
     );
