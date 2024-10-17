@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "974251935497",
+    "firebase_url": "https://cray-tech-project-ecom-default-rtdb.firebaseio.com",
     "project_id": "cray-tech-project-ecom",
     "storage_bucket": "cray-tech-project-ecom.appspot.com"
   },
@@ -12,7 +13,12 @@
           "package_name": "com.hiran.ecom"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "974251935497-ddne95sbrmkj8gc5bkhf3sfg90cu1ubh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyB1dH95mxUHuTgbZv45vAZSS5EHVSbJ2Dc"
@@ -20,7 +26,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "974251935497-ddne95sbrmkj8gc5bkhf3sfg90cu1ubh.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "974251935497-0sr7cjr1pg1u9dts2bes052u0lfpq16a.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.hiran.ecom"
+              }
+            }
+          ]
         }
       }
     }
