@@ -12,9 +12,9 @@ class ProductDetailView extends StatelessWidget {
     return Scaffold(
       body: CustomScrollView(
         slivers: [
-          const SliverAppBar(
+          SliverAppBar(
             flexibleSpace: FlexibleSpaceBar(
-              title: Text('Product 1'),
+              title: Text(product.name!),
             ),
           ),
           SliverToBoxAdapter(
@@ -25,9 +25,8 @@ class ProductDetailView extends StatelessWidget {
             ),
             decoration: BoxDecoration(
               color: Theme.of(context).focusColor,
-              image: const DecorationImage(
-                  image: NetworkImage('https://picsum.photos/250?image=9'),
-                  fit: BoxFit.cover),
+              image: DecorationImage(
+                  image: NetworkImage(product.image!), fit: BoxFit.cover),
               backgroundBlendMode: BlendMode.darken,
               borderRadius: const BorderRadius.only(
                 bottomLeft: Radius.circular(20),
@@ -40,21 +39,19 @@ class ProductDetailView extends StatelessWidget {
           SliverList(
             delegate: SliverChildListDelegate(
               [
-                const ListTile(
-                  title: Text('Product 1'),
-                  subtitle: Text('Description'),
+                ListTile(
+                  title: const Text('Name'),
+                  subtitle: Text(product.name!),
                 ),
-                const ListTile(
-                  title: Text('Price: \$100'),
-                ),
-                const ListTile(
-                  title: Text('Add to cart'),
+                ListTile(
+                  title: const Text('Price: \$100'),
+                  subtitle: Text("\$${product.price!}"),
                 ),
               ],
             ),
           ),
           SliverToBoxAdapter(
-            child: cartButton(context, [product],0 ),
+            child: cartButton(context, [product], 0),
           )
         ],
       ),

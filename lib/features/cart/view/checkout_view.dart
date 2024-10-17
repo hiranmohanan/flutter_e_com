@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
 
 class CheckOutView extends StatelessWidget {
-  const CheckOutView({super.key});
+  const CheckOutView(
+      {super.key,
+
+      required this.total,
+      required this.grandTotal,
+      required this.iteam});
+  
+  final int total;
+  final int grandTotal;
+  final int iteam;
 
   @override
   Widget build(BuildContext context) {
@@ -17,45 +26,46 @@ class CheckOutView extends StatelessWidget {
             const ListTile(
               title: Text('Name'),
               trailing: Text('John Doe'),
-            ),  
-            const ListTile(
+            ),
+             ListTile(
               title: Text('total items'),
-              trailing: Text('5'),
+              trailing: Text(iteam.toString()),
             ),
-            const ListTile(
+             ListTile(
               title: Text('total price'),
-              trailing: Text('1000\$'),
+              trailing: Text('$total\$'),
             ),
-            const ListTile(
+             ListTile(
               title: Text('grand total'),
-              trailing: Text('900\$'),
+              trailing: Text('$grandTotal\$'),
             ),
             const ExpansionTile(
               title: Text('Address'),
-                          childrenPadding:  EdgeInsets.all(10),
-            tilePadding:  EdgeInsets.all(10),
+              childrenPadding: EdgeInsets.all(10),
+              tilePadding: EdgeInsets.all(10),
               children: [
                 ListTile(
-                  title:  Text('Street'),
-                  trailing:  Text('123 Main Street'),
+                  title: Text('Street'),
+                  trailing: Text('123 Main Street'),
                 ),
                 ListTile(
-                  title:  Text('City'),
-                  trailing:  Text('New York'),
+                  title: Text('City'),
+                  trailing: Text('New York'),
                 ),
                 ListTile(
-                  title:  Text('State'),
-                  trailing:  Text('NY'),
+                  title: Text('State'),
+                  trailing: Text('NY'),
                 ),
                 ListTile(
-                  title:  Text('Zip Code'),
-                  trailing:  Text('10001'),
+                  title: Text('Zip Code'),
+                  trailing: Text('10001'),
                 ),
               ],
             ),
-             ExpansionTile(title: const Text('Payment'),
-            childrenPadding:  const EdgeInsets.all(10),
-            tilePadding:  const EdgeInsets.all(10),
+            ExpansionTile(
+              title: const Text('Payment'),
+              childrenPadding: const EdgeInsets.all(10),
+              tilePadding: const EdgeInsets.all(10),
               children: [
                 ListTile(
                   title: const Text('Razorpay'),
@@ -68,7 +78,6 @@ class CheckOutView extends StatelessWidget {
                     );
                   },
                 ),
-                
               ],
             ),
             ElevatedButton.icon(
