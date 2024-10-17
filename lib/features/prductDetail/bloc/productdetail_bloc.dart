@@ -11,7 +11,9 @@ part 'productdetail_event.dart';
 part 'productdetail_state.dart';
 
 class ProductdetailBloc extends Bloc<ProductdetailEvent, ProductdetailState> {
-  ProductdetailBloc() : super(ProductdetailInitial()){}
+  ProductdetailBloc() : super(ProductdetailInitial()){
+    on<ProductDetailCallEvent>(fetchProductDetail);
+  }
 
   Future<void> fetchProductDetail(ProductDetailCallEvent event,Emitter emit) async {
     try {

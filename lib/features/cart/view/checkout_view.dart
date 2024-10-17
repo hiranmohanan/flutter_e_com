@@ -28,15 +28,15 @@ class CheckOutView extends StatelessWidget {
               trailing: Text('John Doe'),
             ),
              ListTile(
-              title: Text('total items'),
+              title: const Text('total items'),
               trailing: Text(iteam.toString()),
             ),
              ListTile(
-              title: Text('total price'),
+              title: const Text('total price'),
               trailing: Text('$total\$'),
             ),
              ListTile(
-              title: Text('grand total'),
+              title: const Text('grand total'),
               trailing: Text('$grandTotal\$'),
             ),
             const ExpansionTile(

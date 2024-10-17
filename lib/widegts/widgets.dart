@@ -5,3 +5,4 @@ import '../models/ffirebase/models.dart';
 import '../service/firebase_service.dart';
 
 part 'cart_button.dart';
+part 'wish_list_button.dart';

@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_e_com/features/product/bloc/product_bloc.dart';
-import 'package:flutter_e_com/service/firebase_service.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../../../models/ffirebase/models.dart';
 import '../../../widegts/widgets.dart';
 import '../../prductDetail/view/product_detail_view.dart';
 
@@ -14,8 +11,7 @@ class ProductView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     context.read<ProductBloc>().add(ProductCallEvent());
-    return BlocBuilder<ProductBloc, ProductState>(
-      builder: (context, state) {
+    return BlocBuilder<ProductBloc, ProductState>(builder: (context, state) {
       if (state is ProductLoading) {
         return const Center(
           child: CircularProgressIndicator(),
@@ -94,30 +90,22 @@ class ProductView extends StatelessWidget {
                                 snapshot[index].image!,
                                 fit: BoxFit.fitWidth,
                               ),
-                              Text(snapshot[index].name!),
-                              Text(snapshot[index].price.toString()),
-                            
-                              Center(
-                                child: cartButton(context, snapshot, index),
+                              
+                              Text(
+                                snapshot[index].name!,
+                                style:
+                                    Theme.of(context).textTheme.displayMedium,
                               ),
-                              Center(
-                                child: ElevatedButton.icon(
-                                    style: ElevatedButton.styleFrom(
-                                        backgroundColor: Theme.of(context)
-                                            .colorScheme
-                                            .secondary,
-                                        iconColor: Colors.white),
-                                    icon: const FaIcon(FontAwesomeIcons.heart),
-                                    onPressed: () {
-                                      FireRDbService().addWishList(
-                                          data: FireRdbData(
-                                              name: snapshot[index].name!,
-                                              price: snapshot[index].price!,
-                                              image: snapshot[index].image!));
-                                    },
-                                    label: const Text('Add to Wishlist',
-                                        style: TextStyle(color: Colors.white))),
-                              )
+                              Text('${snapshot[index].price} \$',
+                                  style:
+                                      Theme.of(context).textTheme.displaySmall),
+                             
+                              Row(
+                                children: [
+                                  cartButton(context, snapshot, index),
+                              wishListButton(context, snapshot, index)
+                                ],
+                              ),
                             ],
                           ),
                         ),
@@ -133,6 +121,4 @@ class ProductView extends StatelessWidget {
       );
     });
   }
-
-  
 }
